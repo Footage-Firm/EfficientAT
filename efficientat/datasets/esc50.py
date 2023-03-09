@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import librosa
 
-from datasets.helpers.audiodatasets import PreprocessDataset, get_roll_func
+from efficientat.datasets.helpers.audiodatasets import PreprocessDataset, get_roll_func
 
 # specify ESC50 location in 'dataset_dir'
 # 3 files have to be located there:

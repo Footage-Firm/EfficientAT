@@ -23,9 +23,13 @@ def NAME_TO_WIDTH(name):
 
 
 import csv
+import os
 
 # Load label
-with open('metadata/class_labels_indices.csv', 'r') as f:
+_HELPERS = os.path.dirname(os.path.realpath(__file__))
+_ROOT = os.path.dirname(_HELPERS)
+_METADATA = os.path.join(_ROOT, 'metadata')
+with open(os.path.join(_METADATA, 'class_labels_indices.csv'), 'r') as f:
     reader = csv.reader(f, delimiter=',')
     lines = list(reader)
 

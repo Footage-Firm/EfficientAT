@@ -5,9 +5,9 @@ import numpy as np
 from torch import autocast
 from contextlib import nullcontext
 
-from models.MobileNetV3 import get_model as get_mobilenet, get_ensemble_model
-from models.preprocess import AugmentMelSTFT
-from helpers.utils import NAME_TO_WIDTH, labels
+from efficientat.models.MobileNetV3 import get_model as get_mobilenet, get_ensemble_model
+from efficientat.models.preprocess import AugmentMelSTFT
+from efficientat.helpers.utils import NAME_TO_WIDTH, labels
 
 class EATagger:
     """
@@ -29,7 +29,7 @@ class EATagger:
                 audio_path (str): path to the audio file
                 window_size (float, optional): size of the window in seconds
                 hop_length (float, optional): hop length in seconds
-                
+
                 Returns: list of dictionaries with the following keys:
                     'start': start time of the window in seconds
                     'end': end time of the window in seconds
@@ -43,7 +43,7 @@ class EATagger:
         device='cuda',
         sample_rate=32000,
         window_size=800,
-        hop_size=320, 
+        hop_size=320,
         n_mels=128):
 
         self.device = torch.device('cuda') if device == 'cuda' and torch.cuda.is_available() else torch.device('cpu')
@@ -82,7 +82,7 @@ class EATagger:
                     - 'tags': list of tags for the window in dictionary format
                         - 'tag': name of the tag
                         - 'probability': confidence of the tag
-                
+
         """
 
         # load audio file
@@ -122,7 +122,7 @@ class EATagger:
 
 
         return tags
-        
+
 
 
 if __name__ == '__main__':
@@ -139,7 +139,7 @@ if __name__ == '__main__':
 
     # tag the audio file
     tags = model.tag_audio_window(args.audio_path, window_size=args.window_size, hop_length=args.hop_length)
-    
+
     # for each window, print the top 5 tags and their probabilities
     for window in tags:
         print(f'Window: {window["start"]:.2f} - {window["end"]:.2f}')

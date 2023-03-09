@@ -19,19 +19,19 @@ However, CNNs (e.g. PANNs [5], ERANN [6], PSLA [7]) have fallen short on Transfo
 from Transformers**. The Figures below show the performance-complexity trade-off for existing Audio Tagging models in
 comparison to our proposed models based on the MobileNetV3 [8] architecture.
 
-![Model Performance vs. Model Size](/images/model_params.png)
+![Model Performance vs. Model Size](/efficientat/images/model_params.png)
 
-![Model Performance vs. Computational Complexity](/images/model_macs.png)
+![Model Performance vs. Computational Complexity](/efficientat/images/model_macs.png)
 
 Based on a recent request, we add the memory complexity of our pre-trained models.
 We calculate the analytical peak memory (memory requirement of input + output activations) as in [14].
 We also take into account memory-efficient inference in MobileNets as described in [15].
 
-The plot below compares the trend in peak memory requirement between different CNNs. We use the file [peak_memory.py](helpers/peak_memory.py)
+The plot below compares the trend in peak memory requirement between different CNNs. We use the file [peak_memory.py](efficientat/helpers/peak_memory.py)
 to determine the peak memory. The memory requirement is calculated assuming a 10 seconds audio snippet and fp16 representation
 for all models.
 
-![Model Performance vs. Memory Complexity](/images/mem_comp.png)
+![Model Performance vs. Memory Complexity](/efficientat/images/mem_comp.png)
 
 
 The next milestones are:
@@ -169,7 +169,7 @@ on the embeddings to solve the tasks. The performance of the shallow MLP on the 
 The following plot compares the scores of PANNs (CNN14) [5], PaSST [1] and our models on each task. The score is normalized by
 the maximal performance reached by a model on the official [leaderboard](https://hearbenchmark.com/hear-leaderboard.html).
 
-![Hear Task Performances](/images/hear_individual_task_results.png)
+![Hear Task Performances](/efficientat/images/hear_individual_task_results.png)
 
 The plot shows that **mn40_as_ext** achieves a new highscore on the tasks *Gunshot Triangulation*,
 *ESC-50* and *GTZAN Genre* across all models on the [leaderboard](https://hearbenchmark.com/hear-leaderboard.html). The quality of embeddings is in general comparable
@@ -181,7 +181,7 @@ achieving higher scores on *6/19* and lower scores on *9/19* tasks (one tie).
 
 Checkout the results summarized per task category for each model:
 
-![Hear Task Category Performances](/images/hear_task_categories.png)
+![Hear Task Category Performances](/efficientat/images/hear_task_categories.png)
 
 ## Train and Evaluate on AudioSet
 
@@ -193,7 +193,7 @@ to run the code in this repository. You should end up with three files:
 * ```unbalanced_train_segmenets_mp3.hdf```
 * ```eval_segmenets_mp3.hdf```
 
-Specify the folder containing the three files above in ```dataset_dir``` in the [dataset file](datasets/audioset.py).
+Specify the folder containing the three files above in ```dataset_dir``` in the [dataset file](efficientat/datasets/audioset.py).
 
 Training and evaluation on AudioSet is implemented in the file [ex_audioset.py](ex_audioset.py).
 #### Evaluation
@@ -215,7 +215,7 @@ Results on AudioSet test split for loaded model: mn10_as
 #### Training
 
 Logging is done using [Weights & Biases](https://wandb.ai/site). Create a free account to log your experiments. During training
-the latest model will be saved to the directory [wandb](wandb).
+the latest model will be saved to the directory [wandb](efficientat/wandb).
 
 To train a model on AudioSet, you can run for example the following command:
 ```
@@ -241,7 +241,7 @@ Extract all files, such that you have a directory with the following content:
 * *meta.csv* (contains filenames and meta data)
 * *evaluation_setup/* specifies data split
 
-Specify the location of this directory in the variable ```dataset_dir``` in the [dataset file](datasets/dcase20.py).
+Specify the location of this directory in the variable ```dataset_dir``` in the [dataset file](efficientat/datasets/dcase20.py).
 
 To fine-tune a pre-trained model for acoustic scene classification run the following command:
 
@@ -268,7 +268,7 @@ You should end up with three files:
 * `FSD50K.val_mp3.hdf`
 * `FSD50K.eval_mp3.hdf`
 
-Specify the location of this directory in the variable ```dataset_dir``` in the [dataset file](datasets/fsd50k.py).
+Specify the location of this directory in the variable ```dataset_dir``` in the [dataset file](efficientat/datasets/fsd50k.py).
 
 To fine-tune a pre-trained model on FSD50K run the following command:
 
@@ -287,7 +287,7 @@ You should end up with a folder `esc50` containing the two folders:
 * `meta`: contains `meta.csv`
 * `audio_32k`: contains all .wav files
 
-Specify the location of this directory in the variable ```dataset_dir``` in the [dataset file](datasets/esc50.py).
+Specify the location of this directory in the variable ```dataset_dir``` in the [dataset file](efficientat/datasets/esc50.py).
 
 To fine-tune a pre-trained model on ESC-50 run the following command:
 

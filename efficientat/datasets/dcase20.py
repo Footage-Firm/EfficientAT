@@ -6,7 +6,7 @@ import torch
 import numpy as np
 import librosa
 
-from datasets.helpers.audiodatasets import PreprocessDataset, get_roll_func
+from efficientat.datasets.helpers.audiodatasets import PreprocessDataset, get_roll_func
 
 dataset_dir = None
 assert dataset_dir is not None, "Specify 'TAU Urban Acoustic Scenes 2020 Mobile dataset' location in variable " \

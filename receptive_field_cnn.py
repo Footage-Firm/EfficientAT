@@ -1,8 +1,7 @@
 import argparse
-import torch
-from models.MobileNetV3 import get_model
-from helpers.utils import NAME_TO_WIDTH
-from helpers.receptive_field import receptive_field_cnn
+from efficientat.models.MobileNetV3 import get_model
+from efficientat.helpers.utils import NAME_TO_WIDTH
+from efficientat.helpers.receptive_field import receptive_field_cnn
 
 
 def calc_receptive_field(args):

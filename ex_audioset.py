@@ -13,11 +13,11 @@ import torch.nn.functional as F
 from torch.hub import download_url_to_file
 import pickle
 
-from datasets.audioset import get_test_set, get_full_training_set, get_ft_weighted_sampler
-from models.MobileNetV3 import get_model as get_mobilenet, get_ensemble_model
-from models.preprocess import AugmentMelSTFT
-from helpers.init import worker_init_fn
-from helpers.utils import NAME_TO_WIDTH, exp_warmup_linear_down, mixup
+from efficientat.datasets.audioset import get_test_set, get_full_training_set, get_ft_weighted_sampler
+from efficientat.models.MobileNetV3 import get_model as get_mobilenet, get_ensemble_model
+from efficientat.models.preprocess import AugmentMelSTFT
+from efficientat.helpers.init import worker_init_fn
+from efficientat.helpers.utils import NAME_TO_WIDTH, exp_warmup_linear_down, mixup
 
 preds_url = \
     "https://github.com/fschmid56/EfficientAT/releases/download/v0.0.1/passt_enemble_logits_mAP_495.npy"
@@ -333,9 +333,9 @@ if __name__ == '__main__':
 
     # knowledge distillation
     parser.add_argument('--teacher_preds', type=str,
-                        default=os.path.join("resources", "passt_enemble_logits_mAP_495.npy"))
+                        default=os.path.join("efficientat/resources", "passt_enemble_logits_mAP_495.npy"))
     parser.add_argument('--fname_to_index', type=str,
-                        default=os.path.join("resources", "fname_to_index.pkl"))
+                        default=os.path.join("efficientat/resources", "fname_to_index.pkl"))
     parser.add_argument('--temperature', type=float, default=1)
     parser.add_argument('--kd_lambda', type=float, default=0.1)
 

@@ -8,11 +8,11 @@ import argparse
 from sklearn import metrics
 import torch.nn.functional as F
 
-from datasets.dcase20 import get_test_set, get_training_set
-from models.MobileNetV3 import get_model as get_mobilenet
-from models.preprocess import AugmentMelSTFT
-from helpers.init import worker_init_fn
-from helpers.utils import NAME_TO_WIDTH, exp_warmup_linear_down, mixup, mixstyle
+from efficientat.datasets.dcase20 import get_test_set, get_training_set
+from efficientat.models.MobileNetV3 import get_model as get_mobilenet
+from efficientat.models.preprocess import AugmentMelSTFT
+from efficientat.helpers.init import worker_init_fn
+from efficientat.helpers.utils import NAME_TO_WIDTH, exp_warmup_linear_down, mixup, mixstyle
 
 
 def train(args):

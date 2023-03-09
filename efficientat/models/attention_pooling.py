@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch import Tensor
 
-from models.utils import collapse_dim
+from efficientat.models.utils import collapse_dim
 
 
 class MultiHeadAttentionPooling(nn.Module):

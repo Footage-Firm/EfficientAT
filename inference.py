@@ -5,9 +5,9 @@ import numpy as np
 from torch import autocast
 from contextlib import nullcontext
 
-from models.MobileNetV3 import get_model as get_mobilenet, get_ensemble_model
-from models.preprocess import AugmentMelSTFT
-from helpers.utils import NAME_TO_WIDTH, labels
+from efficientat.models.MobileNetV3 import get_model as get_mobilenet, get_ensemble_model
+from efficientat.models.preprocess import AugmentMelSTFT
+from efficientat.helpers.utils import NAME_TO_WIDTH, labels
 
 
 def audio_tagging(args):
